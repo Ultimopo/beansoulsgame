@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class PlayerControls : MonoBehaviour
 {   
     //states of the player
     public Transform orientation;
@@ -10,7 +10,7 @@ public class CameraMovement : MonoBehaviour
     //isgrounded check
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool grounded;
+    public bool grounded;
 
 
     public Rigidbody rb;
@@ -25,11 +25,22 @@ public class CameraMovement : MonoBehaviour
 
     Vector3 moveDirection;
 
+    //dashing variables
+    public float dashForce;
+    public float dashDuration;
+    public float dashCooldown;
+
+    public bool canDash;
+    public bool isDashing;
+    public bool isRunning;
+
+
 
     private void KeyInputs()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+        Dash();
     }
 
     private void MovePlayer()
@@ -49,6 +60,53 @@ public class CameraMovement : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * movementSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            movementSpeed = 7.5f;
+            canDash = false;
+            isRunning = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            movementSpeed = 5f;
+            canDash = true;
+            isRunning = false;
+        }
+    }
+    void Dash()
+    {
+        if (canDash && isRunning == false)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Vector3 forceToApply = model.forward * dashForce;
+
+                rb.AddForce(forceToApply, ForceMode.Impulse);
+
+                Invoke(nameof(resetDash), dashDuration);
+                isDashing = true;
+            }
+        }
+    }
+    void resetDash()
+    {
+
+    }
+    
+    void DashCooldown()
+    {
+        if (isDashing == true)
+        {
+            canDash = false;
+            dashCooldown -= 1 * Time.deltaTime;
+        }
+
+        if (dashCooldown < 0)
+        {
+            canDash = true;
+            dashCooldown = 1;
+            isDashing = false;
+        }
     }
 
     // Start is called before the first frame update
@@ -56,6 +114,7 @@ public class CameraMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
     }
 
     // Update is called once per frame
@@ -75,7 +134,7 @@ public class CameraMovement : MonoBehaviour
         KeyInputs();
 
         //ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(model.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         
         if (grounded)
         {
@@ -87,6 +146,9 @@ public class CameraMovement : MonoBehaviour
         }
 
         speedControl();
+        DashCooldown();
+
+        
     }
     void FixedUpdate()
     {
