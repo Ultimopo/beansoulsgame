@@ -34,6 +34,12 @@ public class PlayerControls : MonoBehaviour
     public bool isDashing;
     public bool isRunning;
 
+    //hitboxes and attacks
+    public GameObject LHitbox;
+    public GameObject MHitbox;
+    public GameObject HHitbox;
+
+    public Transform HitboxPosition;
 
 
     private void KeyInputs()
@@ -109,6 +115,14 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    void attack()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Instantiate(MHitbox, HitboxPosition.position, HitboxPosition.rotation);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -147,6 +161,7 @@ public class PlayerControls : MonoBehaviour
 
         speedControl();
         DashCooldown();
+        attack();
 
         
     }
