@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {   
-    //DESTYTOJAU JEI ZIURI CIA ZIAURIAI WIP
-
     //AI
     public Transform target;
 
     public float viewDistance = 10;
+    public GameObject player;
 
     //Health and DMG
     public float health;
@@ -20,12 +19,15 @@ public class Enemy : MonoBehaviour
     //misc variables
     Rigidbody rb;
     public bool isDead;
-
+    
+    
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        player = GameObject.FindWithTag("Player");
+        target = player.transform;
     }
 
     // Update is called once per frame
@@ -46,7 +48,6 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject, 5f);
             rb.constraints = RigidbodyConstraints.None;
         }
-
     }
 
     void OnTriggerEnter(Collider other)
