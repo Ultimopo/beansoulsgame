@@ -239,7 +239,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 5319751483541739429}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -438,7 +438,7 @@ Transform:
   m_GameObject: {fileID: 6183277558249910377}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.876268, y: 1, z: 2.5250483}
+  m_LocalPosition: {x: 12.639841, y: 1.3998654, z: 2.678006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -522,7 +522,7 @@ Transform:
   m_GameObject: {fileID: 6260282938694667644}
   serializedVersion: 2
   m_LocalRotation: {x: -0.14577328, y: 0.82913303, z: -0.09345551, w: 0.5315587}
-  m_LocalPosition: {x: -1.2600018, y: -3.698124, z: 0}
+  m_LocalPosition: {x: -1.22, y: -3.7, z: -0.02}
   m_LocalScale: {x: 1.10239, y: 1.10239, z: 1.10239}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -595,7 +595,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -861,7 +861,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -877,9 +877,10 @@ GameObject:
   - component: {fileID: 988924542945645227}
   - component: {fileID: 2000208214744360540}
   - component: {fileID: 5995669052180926587}
+  - component: {fileID: 8697465416148974072}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -977,6 +978,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8697465416148974072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191332060048552364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8031263cb003746bd7704e09c3f313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+  maximumHP: 10
+  healthbar: {fileID: 0}
 --- !u!1 &8445835190020480361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,7 +1095,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}

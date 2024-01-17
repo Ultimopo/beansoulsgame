@@ -41,6 +41,12 @@ public class PlayerControls : MonoBehaviour
 
     public Transform HitboxPosition;
 
+    //animation
+
+    public Animator animator;
+
+    //stats
+
 
     private void KeyInputs()
     {
@@ -55,7 +61,7 @@ public class PlayerControls : MonoBehaviour
 
         rb.AddForce(moveDirection.normalized * movementSpeed * 10f, ForceMode.Force);
     }
-    
+
     void speedControl()
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
@@ -71,12 +77,14 @@ public class PlayerControls : MonoBehaviour
             movementSpeed = 7.5f;
             canDash = false;
             isRunning = true;
+            animator.Play("Walking");
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             movementSpeed = 5f;
             canDash = true;
             isRunning = false;
+            animator.Play("Walking 0");
         }
     }
     void Dash()
@@ -120,6 +128,8 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Instantiate(MHitbox, HitboxPosition.position, HitboxPosition.rotation);
+            animator.Play("ATTACKMW1");
+            
         }
     }
 
@@ -128,7 +138,6 @@ public class PlayerControls : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        
     }
 
     // Update is called once per frame

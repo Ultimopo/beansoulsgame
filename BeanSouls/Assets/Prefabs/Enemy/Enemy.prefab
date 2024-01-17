@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 4616114642858308895}
   - component: {fileID: 4476011452495346662}
   - component: {fileID: 4754858344550864853}
+  - component: {fileID: 8034698925822631605}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -158,11 +159,13 @@ Transform:
   m_GameObject: {fileID: 6659158624995154636}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 13.074953, y: 1.0000005, z: 19.854523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6067864164395563043}
+  - {fileID: 4368646151005259472}
+  - {fileID: 5914821687887186728}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4836720776722030526
@@ -261,7 +264,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -278,8 +281,106 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  viewDistance: 5
+  attackDistance: 7.5
+  viewDistance: 20
+  desiredDistance: 2.5
+  player: {fileID: 0}
+  speed: 2.5
+  shouldMove: 0
   health: 3
+  DMG: 0
+  timeBetweenAttacks: 3.5
+  isAttacking: 0
+  isStunned: 0
+  hitbox: {fileID: 6462844069154119353, guid: 4a9840d3cf6691a49be49a47d74416ac, type: 3}
+  hitboxArea: {fileID: 5914821687887186728}
   DeathSound: {fileID: 5313984134111946898}
   Dead: {fileID: 8300000, guid: e82fd241c46771145874f2da3428ad4b, type: 3}
   isDead: 0
+  stopLooking: 0
+  Warning: {fileID: 1184738483090492839, guid: 6ad59bdd8da08d84ab3bd2d43bc341ea, type: 3}
+  warningFunctionArea: {fileID: 4368646151005259472}
+--- !u!195 &8034698925822631605
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659158624995154636}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!1 &6697723228592851508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4368646151005259472}
+  m_Layer: 0
+  m_Name: WarningArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4368646151005259472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6697723228592851508}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: 0.578, z: 0.518}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3914116621455738504}
+  m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
+--- !u!1 &8647698382043338626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5914821687887186728}
+  m_Layer: 0
+  m_Name: HitboxDistance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5914821687887186728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8647698382043338626}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3914116621455738504}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
