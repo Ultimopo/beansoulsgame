@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5262250001056931284}
   m_Layer: 0
   m_Name: BasicEnemyHitbox
-  m_TagString: EnemyTag
+  m_TagString: FodderEnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

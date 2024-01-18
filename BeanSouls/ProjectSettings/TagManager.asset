@@ -8,6 +8,7 @@ TagManager:
   - SafetyArea
   - EnemyTag
   - EnemyAttack
+  - FodderEnemyAttack
   layers:
   - Default
   - TransparentFX

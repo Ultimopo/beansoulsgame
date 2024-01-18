@@ -44,8 +44,12 @@ public class PlayerControls : MonoBehaviour
     //animation
 
     public Animator animator;
+    public bool AnimatorIsPlaying()
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).length >
+               animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+    }
 
-    //stats
 
 
     private void KeyInputs()
@@ -172,7 +176,11 @@ public class PlayerControls : MonoBehaviour
         DashCooldown();
         attack();
 
-        
+        if (!AnimatorIsPlaying() && !isRunning)
+        {
+            animator.Play("Idle");
+        }
+
     }
     void FixedUpdate()
     {
